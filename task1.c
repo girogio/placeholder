@@ -10,8 +10,9 @@ void display(int *input_array, int array_length);
 
 int main() {
     int *array[200];
-    //init_array(array);
-    display(array, 2);
+    int array_length = init_array(array);
+    display(array, array_length);
+
     return 0;
 }
 
