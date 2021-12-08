@@ -3,7 +3,7 @@
 ---
 
 ## Description
-This assignment is produced in total fulfillment for the assesment of CPS1011 study unit for the course of `B.Sc. in Computer Science and Mathematics` carried out at the [University of Malta](https://um.edu.mt)   
+This assignment is produced in total fulfillment for the assessment of the [CPS1011](https://www.um.edu.mt/courses/studyunit/CPS1011) study unit for the undergraduate course `B.Sc. in Computer Science and Mathematics` carried out at the [University of Malta](https://um.edu.mt).   
 
 ## Visuals
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
