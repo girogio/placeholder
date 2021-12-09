@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.16)
 project(cps1011_assignment C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(cps1011_assignment task1.c)
+add_executable(task1 task1.c)

@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named cps1011_assignment
+# Target rules for targets named task1
 
 # Build rule for target.
-cps1011_assignment: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cps1011_assignment
-.PHONY : cps1011_assignment
+task1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 task1
+.PHONY : task1
 
 # fast build rule for target.
-cps1011_assignment/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cps1011_assignment.dir/build.make CMakeFiles/cps1011_assignment.dir/build
-.PHONY : cps1011_assignment/fast
+task1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task1.dir/build.make CMakeFiles/task1.dir/build
+.PHONY : task1/fast
 
 task1.o: task1.c.o
 .PHONY : task1.o
 
 # target to build an object file
 task1.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cps1011_assignment.dir/build.make CMakeFiles/cps1011_assignment.dir/task1.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task1.dir/build.make CMakeFiles/task1.dir/task1.c.o
 .PHONY : task1.c.o
 
 task1.i: task1.c.i
@@ -142,7 +142,7 @@ task1.i: task1.c.i
 
 # target to preprocess a source file
 task1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cps1011_assignment.dir/build.make CMakeFiles/cps1011_assignment.dir/task1.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task1.dir/build.make CMakeFiles/task1.dir/task1.c.i
 .PHONY : task1.c.i
 
 task1.s: task1.c.s
@@ -150,7 +150,7 @@ task1.s: task1.c.s
 
 # target to generate assembly for a file
 task1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cps1011_assignment.dir/build.make CMakeFiles/cps1011_assignment.dir/task1.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/task1.dir/build.make CMakeFiles/task1.dir/task1.c.s
 .PHONY : task1.c.s
 
 # Help Target
@@ -161,7 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... cps1011_assignment"
+	@echo "... task1"
 	@echo "... task1.o"
 	@echo "... task1.i"
 	@echo "... task1.s"

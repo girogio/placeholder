@@ -42,5 +42,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/cps1011_assignment.dir/DependInfo.cmake"
+  "CMakeFiles/task1.dir/DependInfo.cmake"
   )
