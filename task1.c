@@ -99,8 +99,10 @@ void reverse(int *array_a, int *array_b, int length) {
 }
 
 void frequency(int *array, vf_pair_t *pairs, int length) {
-    for (int i = 0; i < length; i++) {
+	for(int i = 0; i < length; i++){
 		pairs[i].frequency = -1;
+	}
+    for (int i = 0; i < length; i++) {
         int count = 1;
         for (int j = i + 1; j < length; j++) {
             if (array[i] == array[j]) {
