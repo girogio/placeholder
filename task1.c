@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "task1.h"
+#include <stdio.h>  // for basic IO
+#include <stdlib.h> // for malloc()
+#include "task1.h"  // header file for my methods
 
 int main() {
 
