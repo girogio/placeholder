@@ -1,6 +1,6 @@
 #include <stdio.h>  // for basic IO
 #include <stdlib.h> // for malloc()
-#include "task1.h"  // header file for my methods
+#include "task1.h"  // header file for custom functions, structs, and generally neater code
 
 int main() {
 
@@ -10,8 +10,8 @@ int main() {
     array = (int *) malloc(MAX * sizeof(int));
     reversed_array = (int *) malloc(MAX * sizeof(int));
     pairs = (vf_pair_t *) malloc(MAX * sizeof(vf_pair_t));
-
-    printf("\e[1;1H\e[2J");
+	boolean is_array_init = false;
+	clear_term();
 
     int choice = 0;
     while (choice != 5) {
@@ -21,7 +21,7 @@ int main() {
         switch (choice) {
             case 1:
                 array_length = init_array(array);
-                printf("\e[1;1H\e[2J");
+				is_array_init = true;
                 break;
             case 2:
                 display(array, array_length);
@@ -31,14 +31,14 @@ int main() {
                 display(reversed_array, array_length);
                 break;
             case 4:
-                for (int i = 0; i < array_length; i++) {
-                    pairs[i].frequency = -1;
-                }
                 frequency(array, pairs, array_length);
                 display_frequencies(pairs, array_length);
                 break;
             case 5:
-                printf("Bye!");
+				free(array);
+				free(reversed_array);
+				free(pairs);
+				clear_term();
             default:
                 break;
         }
@@ -54,6 +54,7 @@ void print_menu(int *choice) {
 
 int init_array(int *input_array) {
     int length = 0;
+	clear_term();
     printf("How many integers should this array hold? [0-200]\n> ");
     while (length <= 0 | length > 200) {
         scanf("%d", &length);
@@ -67,18 +68,24 @@ int init_array(int *input_array) {
         printf("Enter integer #%d\n> ", i + 1);
         scanf("%d", &input_array[i]); // place value directly in the array at index i
     }
+	clear_term();
     return length;
 }
 
 void display(int *input_array, int array_length) {
-    printf("{\n\t\"array\": [\n");
+	clear_term();
+    printf("{\n%*s\"array\": [\n", 4, " ");
     for (int i = 0; i < array_length; i++) {
-        printf("\t\t{\n");
+        printf("%*s{\n", 8, " ");
         jprint("offset", i, 'y');
         jprint("value", input_array[i], 'n');
-        printf("\n\t\t},\n\n");
+		printf("\n%*s", 8, " ");
+		if(i == array_length - 1)
+			printf("}\n");
+		else
+			printf("},\n\n");
     }
-    printf("\t]\n}");
+    printf("%*s]\n}\n", 4, " ");
 }
 
 void reverse(int *array_a, int *array_b, int length) {
@@ -93,6 +100,7 @@ void reverse(int *array_a, int *array_b, int length) {
 
 void frequency(int *array, vf_pair_t *pairs, int length) {
     for (int i = 0; i < length; i++) {
+		pairs[i].frequency = -1;
         int count = 1;
         for (int j = i + 1; j < length; j++) {
             if (array[i] == array[j]) {
@@ -108,24 +116,33 @@ void frequency(int *array, vf_pair_t *pairs, int length) {
 }
 
 void display_frequencies(vf_pair_t *pairs, int array_length) {
-    printf("{\n\t\"array\": [\n");
-    int offset = 0;
+	clear_term();
+    printf("{\n%*s\"array\": [\n", 4, " ");
+	int offset = 0;
     for (int i = 0; i < array_length; i++) {
-        if (pairs[i].frequency != 0) {
-            printf("\t\t{\n");
-            jprint("offset", offset++, 'y');
-            jprint("value", pairs[i].value, 'y');
-            jprint("frequency", pairs[i].frequency, 'n');
-            printf("\n\t\t},\n\n");
-        }
+		if(pairs[i].frequency != 0){
+        printf("%*s{\n", 8, " ");
+        jprint("offset", offset++, 'y');
+        jprint("value", pairs[i].value, 'y');
+        jprint("frequency", pairs[i].frequency, 'n');
+		printf("\n%*s", 8, " ");
+		if(i == array_length - 1)
+			printf("}\n");
+		else
+			printf("},\n\n");
+		}
     }
-    printf("\t]\n}");
+    printf("%*s]\n}\n", 4, " ");
+}
+
+void clear_term(){
+    printf("\e[1;1H\e[2J"); // clear console
 }
 
 void jprint(char *label, int value, char comma) {
     if (comma == 'y') {
-        printf("\t\t\t\"%s\": \"%02d\",\n", label, value);
+        printf("%*s\"%s\": \"%02d\",\n", 12, " ", label, value);
     } else if (comma == 'n') {
-        printf("\t\t\t\"%s\": \"%02d\"", label, value);
+        printf("%*s\"%s\": \"%02d\"", 12, " ", label, value);
     }
 }
