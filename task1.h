@@ -5,6 +5,8 @@ typedef struct  vf_pair {
     int frequency;
 } vf_pair_t;
 
+typedef enum { false, true } boolean;
+
 void print_menu(int *choice);
 
 int init_array(int *array);
@@ -18,3 +20,5 @@ void frequency(int *array, vf_pair_t  *pairs, int array_length);
 void display_frequencies(vf_pair_t *pairs, int array_length);
 
 void jprint(char *attribute, int value, char comma);
+
+void clear_term();
