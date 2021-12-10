@@ -1,3 +1,0 @@
-/home/grongo/CLionProjects/cps1011-assignment/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/grongo/CLionProjects/cps1011-assignment/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/grongo/CLionProjects/cps1011-assignment/cmake-build-debug/CMakeFiles/task1.dir

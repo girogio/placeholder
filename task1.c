@@ -11,6 +11,7 @@ int main() {
     reversed_array = (int *) malloc(MAX * sizeof(int));
     pairs = (vf_pair_t *) malloc(MAX * sizeof(vf_pair_t));
 
+    printf("\e[1;1H\e[2J");
 
     int choice = 0;
     while (choice != 5) {
@@ -20,6 +21,7 @@ int main() {
         switch (choice) {
             case 1:
                 array_length = init_array(array);
+                printf("\e[1;1H\e[2J");
                 break;
             case 2:
                 display(array, array_length);
@@ -46,7 +48,7 @@ int main() {
 }
 
 void print_menu(int *choice) {
-    printf("\n1. Initialize the array\n2. Display the array\n3. Reverse the array\n4. Display frequencies of entries in array\n5. Exit\n> ");
+    printf("1. Initialize the array\n2. Display the array\n3. Reverse the array\n4. Display frequencies of entries in array\n5. Exit\n> ");
     scanf("%d", choice);
 }
 
