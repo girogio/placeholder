@@ -10,29 +10,34 @@ int main() {
     array = (int *) malloc(MAX * sizeof(int));
     reversed_array = (int *) malloc(MAX * sizeof(int));
     pairs = (vf_pair_t *) malloc(MAX * sizeof(vf_pair_t));
+
 	boolean is_array_init = false;
 	clear_term();
 
     int choice = 0;
     while (choice != 5) {
-
         print_menu(&choice);
-
         switch (choice) {
             case 1:
                 array_length = init_array(array);
 				is_array_init = true;
                 break;
             case 2:
-                display(array, array_length);
+				is_array_init ?
+					display(array, array_length) 
+				  : printf("%s", ERR_MSG); 	
                 break;
             case 3:
-                reverse(array, reversed_array, array_length);
-                display(reversed_array, array_length);
+				is_array_init ? 
+					reverse(array, reversed_array, array_length), 
+					display(reversed_array, array_length) 
+				  : printf("%s", ERR_MSG);
                 break;
             case 4:
-                frequency(array, pairs, array_length);
-                display_frequencies(pairs, array_length);
+				is_array_init ? 
+					frequency(array, pairs, array_length),
+					display_frequencies(pairs, array_length)
+				  : print_err();
                 break;
             case 5:
 				free(array);
@@ -48,7 +53,7 @@ int main() {
 }
 
 void print_menu(int *choice) {
-    printf("1. Initialize the array\n2. Display the array\n3. Reverse the array\n4. Display frequencies of entries in array\n5. Exit\n> ");
+    printf("1. Initialize the array\n2. Display the array\n3. Reverse a copy of the array and display it\n4. Display frequencies of entries in array\n5. Exit\n> ");
     scanf("%d", choice);
 }
 
@@ -59,7 +64,7 @@ int init_array(int *input_array) {
     while (length <= 0 | length > 200) {
         scanf("%d", &length);
 
-        if (length < 0 | length > 200) {
+        if (length <= 0 | length >= 200) {
             printf("Invalid input. Try again.\n> ");
         }
     }
@@ -77,8 +82,8 @@ void display(int *input_array, int array_length) {
     printf("{\n%*s\"array\": [\n", 4, " ");
     for (int i = 0; i < array_length; i++) {
         printf("%*s{\n", 8, " ");
-        jprint("offset", i, 'y');
-        jprint("value", input_array[i], 'n');
+        jprintf("offset", i, true);
+        jprintf("value", input_array[i], false);
 		printf("\n%*s", 8, " ");
 		if(i == array_length - 1)
 			printf("}\n");
@@ -124,9 +129,11 @@ void display_frequencies(vf_pair_t *pairs, int array_length) {
     for (int i = 0; i < array_length; i++) {
 		if(pairs[i].frequency != 0){
         printf("%*s{\n", 8, " ");
-        jprint("offset", offset++, 'y');
-        jprint("value", pairs[i].value, 'y');
-        jprint("frequency", pairs[i].frequency, 'n');
+
+        jprintf("offset", offset++, true);
+        jprintf("value", pairs[i].value, true);
+        jprintf("frequency", pairs[i].frequency, false);
+
 		printf("\n%*s", 8, " ");
 		if(i == array_length - 1)
 			printf("}\n");
@@ -141,10 +148,14 @@ void clear_term(){
     printf("\e[1;1H\e[2J"); // clear console
 }
 
-void jprint(char *label, int value, char comma) {
-    if (comma == 'y') {
+void print_err(){
+	printf("%s", ERR_MSG);
+}
+
+void jprintf(char *label, int value, boolean comma) {
+    if (comma) {
         printf("%*s\"%s\": \"%02d\",\n", 12, " ", label, value);
-    } else if (comma == 'n') {
+    } else{
         printf("%*s\"%s\": \"%02d\"", 12, " ", label, value);
     }
 }

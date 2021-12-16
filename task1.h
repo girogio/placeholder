@@ -1,5 +1,7 @@
 #define MAX 200
 
+char ERR_MSG[] = "\nERROR: No array is initialized.\n\n" ;
+
 typedef struct  vf_pair {
     int value;
     int frequency;
@@ -19,6 +21,8 @@ void frequency(int *array, vf_pair_t  *pairs, int array_length);
 
 void display_frequencies(vf_pair_t *pairs, int array_length);
 
-void jprint(char *attribute, int value, char comma);
+void jprintf(char *attribute, int value, boolean comma);
 
 void clear_term();
+
+void print_err();
