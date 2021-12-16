@@ -1,19 +1,23 @@
-#include <stdio.h>  // for basic IO
-#include <stdlib.h> // for malloc()
-#include "task1.h"  // header file for custom functions, structs, and generally neater code
+#include <stdio.h>
+#include <stdlib.h>
+#include "task1.h"
 
 int main() {
 
+	// variable declaration 
     int *array, *reversed_array, array_length;
     vf_pair_t *pairs;
 
+	// memory allocation
     array = (int *) malloc(MAX * sizeof(int));
     reversed_array = (int *) malloc(MAX * sizeof(int));
     pairs = (vf_pair_t *) malloc(MAX * sizeof(vf_pair_t));
-
+	
+	// array existance flag
 	boolean is_array_init = false;
 	clear_term();
 
+	// menu block
     int choice = 0;
     while (choice != 5) {
         print_menu(&choice);
@@ -25,13 +29,13 @@ int main() {
             case 2:
 				is_array_init ?
 					display(array, array_length) 
-				  : printf("%s", ERR_MSG); 	
+				  : print_err();	
                 break;
             case 3:
 				is_array_init ? 
 					reverse(array, reversed_array, array_length), 
 					display(reversed_array, array_length) 
-				  : printf("%s", ERR_MSG);
+				  : print_err();
                 break;
             case 4:
 				is_array_init ? 
@@ -59,12 +63,15 @@ void print_menu(int *choice) {
 
 int init_array(int *input_array) {
     int length = 0;
+	
 	clear_term();
     printf("How many integers should this array hold? [0-200]\n> ");
-    while (length <= 0 | length > 200) {
+
+	// range validation 
+    while (length <= 0 | length >= 200) {
         scanf("%d", &length);
 
-        if (length <= 0 | length >= 200) {
+        if (length <= 0 | length > 200) {
             printf("Invalid input. Try again.\n> ");
         }
     }
@@ -73,7 +80,10 @@ int init_array(int *input_array) {
         printf("Enter integer #%d\n> ", i + 1);
         scanf("%d", &input_array[i]); // place value directly in the array at index i
     }
+	
+	// clear terminal at end of execution
 	clear_term();
+
     return length;
 }
 
