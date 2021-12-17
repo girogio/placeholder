@@ -1,0 +1,76 @@
+\vspace{3em}
+
+\begin{center}
+	{\large \texttt{array\_a} \hspace{7em} \texttt{array\_b}}
+\end{center}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain}]
+	\node [MyStyle] (1) {$1$};
+	\node [MyStyle] (2) {$2$};
+	\node [MyStyle] (3) {$3$};
+	\node [MyStyle] (4) {$4$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (4.south west) to node[black,midway,below= 15pt] {\code{end}} (4.south east);%
+\end{tikzpicture}
+\hspace{5em}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain},  ]
+	\node [MyStyle] (1) {$4$};
+	\node [MyStyle] (2) {$24$};
+	\node [MyStyle] (3) {$54$};
+	\node [MyStyle] (4) {$32$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (1.south west) to node[black,midway,below= 15pt] {\code{start}} (1.south east);%
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain}]
+	\node [MyStyle] (1) {$1$};
+	\node [MyStyle] (2) {$2$};
+	\node [MyStyle] (3) {$3$};
+	\node [MyStyle] (4) {$4$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (3.south west) to node[black,midway,below= 15pt] {\code{end}} (3.south east);%
+\end{tikzpicture}
+\hspace{5em}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain},  ]
+	\node [MyStyle] (1) {$4$};
+	\node [MyStyle] (2) {$3$};
+	\node [MyStyle] (3) {$54$};
+	\node [MyStyle] (4) {$4$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (2.south west) to node[black,midway,below= 15pt] {\code{start}} (2.south east);%
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain}]
+	\node [MyStyle] (1) {$1$};
+	\node [MyStyle] (2) {$2$};
+	\node [MyStyle] (3) {$3$};
+	\node [MyStyle] (4) {$4$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (2.south west) to node[black,midway,below= 15pt] {\code{end}} (2.south east);%
+\end{tikzpicture}
+\hspace{5em}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain},  ]
+	\node [MyStyle] (1) {$4$};
+	\node [MyStyle] (2) {$3$};
+	\node [MyStyle] (3) {$2$};
+	\node [MyStyle] (4) {$32$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (3.south west) to node[black,midway,below= 15pt] {\code{start}} (3.south east);%
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain}]
+	\node [MyStyle] (1) {$1$};
+	\node [MyStyle] (2) {$2$};
+	\node [MyStyle] (3) {$3$};
+	\node [MyStyle] (4) {$4$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (1.south west) to node[black,midway,below= 15pt] {\code{end}} (1.south east);%
+\end{tikzpicture}
+\hspace{5em}
+\begin{tikzpicture}[start chain = going right, node distance = 0pt, MyStyle/.style={draw, minimum width=2em, minimum height=2em, outer sep=0pt, on chain},  ]
+	\node [MyStyle] (1) {$4$};
+	\node [MyStyle] (2) {$3$};
+	\node [MyStyle] (3) {$2$};
+	\node [MyStyle] (4) {$1$};
+	\draw[decorate,decoration={brace, amplitude=10pt, raise=5pt, mirror}] (4.south west) to node[black,midway,below= 15pt] {\code{start}} (4.south east);%
+\end{tikzpicture}
+\end{center}
