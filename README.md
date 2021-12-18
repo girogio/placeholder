@@ -9,7 +9,7 @@ This assignment is produced in total fulfillment for the assessment of the [CPS1
 ```bash
 git clone https://gitlab.com/girogio/cps1011-assignment.git
 cd cps1011-assignment
-
+cmake --build ./
 ```
 ## Project status
 This assignment is still under progress, and will be until the `submission` branch is created.

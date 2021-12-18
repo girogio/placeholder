@@ -61,7 +61,7 @@ int init_array(int *input_array) {
     int length = 0;
 
     clear_term();
-    printf("How many integers should this array hold? [0-200]\n> ");
+    printf("How many integers should this array hold? [1-200]\n> ");
 
     while (length <= 0 | length >= 200) {
         scanf("%d", &length);
