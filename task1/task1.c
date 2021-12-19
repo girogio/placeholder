@@ -30,19 +30,19 @@ int main() {
             case 2:
                 is_array_init ?
                 display(array, array_length)
-                              : print_err();
+                              : puts(ERR_MSG);
                 break;
             case 3:
                 is_array_init ?
                 reverse(array, reversed_array, array_length),
                         display(reversed_array, array_length)
-                              : print_err();
+                              : puts(ERR_MSG);
                 break;
             case 4:
                 is_array_init ?
                 frequency(array, pairs, array_length),
                         display_frequencies(pairs, array_length)
-                              : print_err();
+                              : puts(ERR_MSG);
                 break;
             case 5:
                 free(array);
@@ -153,10 +153,6 @@ void print_menu(int *choice) {
 
 void clear_term() {
     printf("\e[1;1H\e[2J");
-}
-
-void print_err() {
-    printf("%s", ERR_MSG);
 }
 
 void jprintf(char *label, int value, boolean comma) {

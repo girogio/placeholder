@@ -1,6 +1,6 @@
 #define MAX 200
 
-char ERR_MSG[] = "\nERROR: No array is initialized.\n\n" ;
+char ERR_MSG[] = "\nERROR: No array is initialized.\n" ;
 
 typedef struct {
     int value;
@@ -25,7 +25,6 @@ void jprintf(char *attribute, int value, boolean comma);
 
 void clear_term();
 
-void print_err();
 
 
 
