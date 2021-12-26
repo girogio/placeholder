@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <stdio.h>
 
 #define MAX 200
@@ -5,6 +6,13 @@
 char ERR_MSG[] = "\nERROR: No array is initialized.\n\n" ;
 
 typedef struct vf_pair {
+=======
+#define MAX 200
+
+char ERR_MSG[] = "\nERROR: No array is initialized.\n" ;
+
+typedef struct {
+>>>>>>> 3f2407eca94cbb8a6ae015aa37513312c4bf938a
     int value;
     int frequency;
 } vf_pair_t;
@@ -27,7 +35,10 @@ void jprintf(char *attribute, int value, boolean comma);
 
 void clear_term();
 
+<<<<<<< HEAD
 void print_err();
+=======
+>>>>>>> 3f2407eca94cbb8a6ae015aa37513312c4bf938a
 
 
 

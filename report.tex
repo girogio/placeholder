@@ -1,16 +1,18 @@
 \documentclass{article}
 
-\usepackage{parskip}
+%Packages used
 \usepackage[T1]{fontenc}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
-\usepackage[scale=.97]{sourcecodepro}
-\usepackage{titlesec}
-\usepackage{tikz}
-\usepackage{listings}
-\usetikzlibrary{arrows.meta,chains,%
-decorations.pathreplacing}
-\usepackage{xcolor}
+\usepackage[a4paper, total={6in, 8in}]{geometry} % a4 margins
+\usepackage[scale=.97]{sourcecodepro} % code font
+\usepackage{titlesec} % title/section/subsection/... customization
+\usepackage{parskip} % no par indents
+\usepackage{xcolor} % rainbow!
+\usepackage{hyperref} % toc hyperlinks
+\usepackage{tikz} % diagrams
+\usetikzlibrary{arrows.meta,chains,decorations.pathreplacing} % stuff for diagrams!
+\usepackage{listings} % pretty code
 
+%Custom command for code
 \newcommand{\code}[1]{\lstinline[language=C]!#1!}
 
 %New colors defined below
@@ -40,13 +42,11 @@ decorations.pathreplacing}
 
 \lstset{style=mystyle}
 
+%Document metadata
 \title{CPS1011 - Programming Principles in C}
 \author{Giorgio Grigolo}
 \date{Semester 1 - 2021/22}
 
-
-% \titleformat{\section}
-% 	{\scshape}{\thesection}{1em}{}
 \titleformat{\section}[block] % section
   {\Large\scshape}
   {}
@@ -55,6 +55,7 @@ decorations.pathreplacing}
   {0em} %left
   {0em} %before
   {2em} %after
+
 \begin{document}
 
 \maketitle
@@ -62,10 +63,32 @@ decorations.pathreplacing}
 \newpage
 
 \section{Task 1 - Problem Solving}
+
+\subsection{Header File}
+
+\lstinputlisting[language=C]{task1/task1.h}
+
+In line 1, we define the absolute maximum of entries as required by the question. This
+(\textit{and all the following}) is done
+in a header file to remove clutter from the main C source file. 
+
+A string for an error message is declared in line 2.
+
+The type definition for a value-frequency pair containing two members of type \code{int} occurs 
+in lines 5-7. An array of this type is later to be declared and used. Additionally, a type
+definition for the boolean data type is created to avoid importing the \code{<stdbool.h>} header 
+file.
+
+The remaining, are the pointers to the subroutines which are going to be defined and described in
+the following sections.
+
+\newpage
+
 \subsection{Function Definitions}
+
 \subsubsection{\texttt{init\_array()}}
 	
-\lstinputlisting[language=C, firstline=60, lastline=82]{task1.c}
+\lstinputlisting[language=C, firstline=60, lastline=82]{task1/task1.c}
 
 The above function iterates indefinitely, until a valid input is obtained for the length of the
 array to be initialized. Furthermore, it will iterate for as many times as was previously entered
@@ -73,7 +96,8 @@ by the user, whilst requesting further input to populate the array specified in 
 parameter \code{int *input_array}.
 
 The \code{while} loop from lines 7-13 performs a \textbf{bitwise or} on the
-range check ensuring that the input is an integer such that $0 < \texttt{length} \leq 200$. An extremal bound check is performed in the \code{if} statement in lines 10-12 to alert the user
+range check ensuring that the input is an integer such that $0 < \texttt{length} \leq 200$. 
+An extremal bound check is performed in the \code{if} statement in lines 10-12 to alert the user
 about erroneous input in case the above restrictions are ignored.
 
 A \code{for} loop is used in lines 15-18 to ask the user \code{length} times for an input which is
@@ -86,7 +110,7 @@ Finally, it returns the length specified by the user as an integer, to be later 
  
 \subsubsection{\texttt{display()}}
 
-\lstinputlisting[language=C, firstline=84, lastline=98]{task1.c}
+\lstinputlisting[language=C, firstline=84, lastline=98]{task1/task1.c}
 
 The above function simply displays any integer array passed to it, specifically in the \textbf{JSON}
 format, given that its size is also passed to the function. 
@@ -117,7 +141,7 @@ It is to be noted that each of these blocks represents one element in the \code{
 
 \subsubsection{\texttt{reverse()}}
 
-\lstinputlisting[language=C, firstline=100, lastline=109]{task1.c}
+\lstinputlisting[language=C, firstline=100, lastline=109]{task1/task1.c}
 
 This function accepts two arrays containing pointers pointing to integers and their length. It is
 worth noting that since \code{array_a} is read-only, it has been declared as \code{const int
@@ -140,6 +164,37 @@ Below is a block-view of an arbitrary run of the \code{reverse()} function, wher
 
 \subsubsection{\texttt{frequency()}}
 
-\lstinputlisting[language=C, firstline=110, lastline=127]{task1.c}
+\lstinputlisting[language=C, firstline=110, lastline=127]{task1/task1.c}
 
+\newpage
+
+\subsubsection{\texttt{display\_frequencies()}}
+
+\lstinputlisting[language=C, firstline=129, lastline=148]{task1/task1.c}
+
+\newpage
+
+\subsection{Utility Function Definitions}
+
+\subsubsection{\texttt{print\_menu()}}
+
+\lstinputlisting[language=C, firstline=149, lastline=153]{task1/task1.c}
+
+\subsubsection{\texttt{clear\_term()}}
+
+\lstinputlisting[language=C, firstline=154, lastline=156]{task1/task1.c}
+
+\subsubsection{\texttt{jprintf()}}
+
+\lstinputlisting[language=C, firstline=154, lastline=156]{task1/task1.c}
+
+\newpage
+
+\subsection{The \code{main()} Method}
+
+\lstinputlisting[language=C, firstline=5, lastline=58]{task1/task1.c}
+
+\newpage
+
+\section{A DataTable library.}
 \end{document}

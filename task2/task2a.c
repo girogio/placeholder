@@ -1,23 +1,10 @@
-#include "task2.h"
+#include "task2a.h"
 
 void triple(double *num);
 
+
 int main()
 {
-
-    //    FILE *stream = fopen("test.csv", "r");
-    //    char current_char = '\0';
-    //    while (current_char != EOF) {
-    //        current_char = (char) fgetc(stream);
-    //        if (current_char != EOF)
-    //            if (current_char == ',') {
-    //                putchar('|');
-    //            } else if (current_char == '\\') {
-    //                putchar(fgetc(stream));
-    //            } else {
-    //                putchar(current_char);
-    //            }
-    //    }
 
     Field_t fields[] = {
         {"Label0", FLOAT},
@@ -28,12 +15,12 @@ int main()
         {"Label5", STRING},
     };
 
-    Column cols[MAXCOLS] = {
+    Column cols[] = {
         {.number = {1, 2, 3, 4.6, 5.9, 4.6}},
         {.number = {1.3, 2.2, 3.4, 4.2, 5.8, 4.6}},
         {.number = {11.3, 1112.2, 31114, 11112, 51.18, 4.16}},
         {.string = {"some", "strings", "are", "longer", "than", "others"}},
-        {.string = {"lol", "easy", "peasy", "aaaaaanotherone", "abbb", "sadasda"}},
+        {.string = {"lol", "easy", "peasy", "aaaaaanother, one", "abbb", "sadasda"}},
         {.string = {"alksdm", "its", "not", "that", "hard", "asdad", "XDZ"}}
     };
 
@@ -49,12 +36,57 @@ int main()
 
     showDT(mytable);
 
+    exportDT(mytable, "output.csv");
+
     deinitDT(mytable);
 }
 
 void triple(double *num)
 {
     *num *= 3;
+}
+
+
+void exportDT(const DataTable_t *some_table, char *file_name)
+{
+
+    FILE *file = fopen(file_name, "w");
+    if (file == NULL)
+    {
+        printf("Error opening file!\n");
+        exit(1);
+    }
+
+    int max_row_count = 0;
+    for (int i = 0; i < sizeof(some_table->fields) / sizeof(some_table->fields[0]); i++)
+    {
+        if (some_table->fields[i].actual_rows > max_row_count)
+            max_row_count = some_table->fields[i].actual_rows;
+    }
+
+    for (int i = 0; i < max_row_count; i++)
+    {
+        for (int j = 0; j < sizeof(some_table->fields) / sizeof(some_table->fields[0]); j++)
+        {
+            if (some_table->fields[j].type == STRING)
+            {
+                for (int k = 0; k < strlen(some_table->columns[j].string[i]); k++)
+                {
+                    if (some_table->columns[j].string[i][k] == ',')
+                        putc('\\', file);
+                    putc(some_table->columns[j].string[i][k], file);
+                }
+            } else if (some_table->columns[j].number[i] != 0)
+                fprintf(file, "%f", some_table->columns[j].number[i]);
+            putc(',', file);
+        }
+        putc('\n', file);
+
+    }
+
+
+    fclose(file);
+
 }
 
 DataTable_t *init_DT(Field_t user_fields[MAXCOLS], Column cols[MAXCOLS])
@@ -79,7 +111,7 @@ DataTable_t *init_DT(Field_t user_fields[MAXCOLS], Column cols[MAXCOLS])
             count++;
         }
 
-        // save amount of meaningful rows
+        // store amount of meaningful rows in actual_rows
         myTable->fields[i].actual_rows = count;
     }
 
@@ -180,7 +212,6 @@ DataTable_t *projectDT(DataTable_t *some_table, int m, int n, int x, int y)
 
 void mutateDT(DataTable_t *some_table, int column, void (*some_function)(double *num))
 {
-    printf("%d", some_table->fields[column].actual_rows);
     for (int i = 0; i < some_table->fields[column].actual_rows; i++)
     {
         some_function(&some_table->columns[column].number[i]);

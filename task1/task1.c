@@ -30,19 +30,31 @@ int main() {
             case 2:
                 is_array_init ?
                 display(array, array_length)
+<<<<<<< HEAD
                               : print_err();
+=======
+                              : puts(ERR_MSG);
+>>>>>>> 3f2407eca94cbb8a6ae015aa37513312c4bf938a
                 break;
             case 3:
                 is_array_init ?
                 reverse(array, reversed_array, array_length),
                         display(reversed_array, array_length)
+<<<<<<< HEAD
                               : print_err();
+=======
+                              : puts(ERR_MSG);
+>>>>>>> 3f2407eca94cbb8a6ae015aa37513312c4bf938a
                 break;
             case 4:
                 is_array_init ?
                 frequency(array, pairs, array_length),
                         display_frequencies(pairs, array_length)
+<<<<<<< HEAD
                               : print_err();
+=======
+                              : puts(ERR_MSG);
+>>>>>>> 3f2407eca94cbb8a6ae015aa37513312c4bf938a
                 break;
             case 5:
                 free(array);
@@ -155,10 +167,13 @@ void clear_term() {
     printf("\e[1;1H\e[2J");
 }
 
+<<<<<<< HEAD
 void print_err() {
     printf("%s", ERR_MSG);
 }
 
+=======
+>>>>>>> 3f2407eca94cbb8a6ae015aa37513312c4bf938a
 void jprintf(char *label, int value, boolean comma) {
     comma ?
         printf("%*s\"%s\": \"%02d\",\n", 12, " ", label, value)
