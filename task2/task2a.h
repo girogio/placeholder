@@ -21,7 +21,7 @@ typedef union
 typedef struct
 {
     char name[MAXSTRING];
-    char type;
+    Type_t type;
     int actual_rows;
 } Field_t;
 
